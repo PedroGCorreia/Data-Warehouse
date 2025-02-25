@@ -24,7 +24,7 @@ CREATE TABLE Dim_Data (
 -- Tabela de dimensão de produto
 CREATE TABLE Dim_Produto (
     id_produto SERIAL PRIMARY KEY,
-    nome_produto VARCHAR(50),
+    nome_produto VARCHAR(200),
     subgrupo VARCHAR(50),
     grupo VARCHAR(50),
     unidade_medida VARCHAR(20)
