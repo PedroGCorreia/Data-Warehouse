@@ -8,16 +8,15 @@
 -- Consulta 01: visualização dos preços ao longo de um determinado período de tempo
 CREATE MATERIALIZED VIEW mv_preco_medio_tempo AS
 SELECT 
-dd.ano,
-dd.mes,
-dd.mes_por_extenso,
-AVG(fc.preco) AS preco_medio
+    dd.ano,
+    dd.mes,
+    dd.mes_por_extenso,
+    AVG(fc.preco) AS preco_medio
 FROM fato_cotacao fc
 JOIN dim_data dd ON fc.id_data = dd.id_data
-WHERE fc.id_produto = <ID_PRODUTO> -- Alterar para o produto desejado no filtro
+WHERE fc.id_produto = <id_produto> -- Alterar para o produto desejado no filtro
 GROUP BY dd.ano, dd.mes, dd.mes_por_extenso
 ORDER BY preco_medio
-
 
 -- Consulta 02: preço médio de um determinado produto em cada região (permite identificar as melhores regiões para se comprar determinado produto)
 CREATE MATERIALIZED VIEW mv_preco_medio_regiao AS
@@ -35,7 +34,7 @@ ORDER BY preco_medio;
 CREATE MATERIALIZED VIEW mv_produtos_regiao AS
 SELECT DISTINCT 
     dp.id_produto,
-dp.nome_produto,
+    dp.nome_produto,
     dp.grupo,
     dp.subgrupo,
     dp.unidade_medida
